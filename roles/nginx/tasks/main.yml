@@ -1,0 +1,23 @@
+- name: Insatlling Nginx
+  tags: nignx
+  apt: name=nginx state=latest
+  notify: Restart Nginx
+
+- name: Updating Nginx config file
+  become: true
+  copy:
+    src: templates/nginx.conf
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Linking with sites-enabled files
+  become: true
+  file:
+    src: "/etc/nginx/sites-available/default"
+    dest: "/etc/nginx/sites-enabled/default"
+    state: link
+    owner: root
+    group: root
+  notify: Restart Nginx

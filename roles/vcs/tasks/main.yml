@@ -1,0 +1,7 @@
+- name: updating cache
+  apt: update_cache=yes
+
+- name: insatlling git
+  apt:
+    name: git
+    state: latest

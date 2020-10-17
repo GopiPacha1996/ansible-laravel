@@ -1,0 +1,21 @@
+- name: Installing PHP-FPM PPA Repo
+  apt_repository:
+          repo: 'ppa:ondrej/php'
+  tags:
+     - php
+- name: installing PHP
+  apt: 
+   name: php7.4
+   state: latest
+- name: Installing PHP Packages
+  apt:
+   name: "{{item}}"
+   state: latest
+  with_items:
+        - php7.4-curl
+        - php7.4-fpm
+        - php7.4-intl
+        - php7.4-mysql
+        - php7.4-xml
+        - php7.4-mbstring
+  notify: Restart PHP 
