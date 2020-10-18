@@ -1,7 +1,7 @@
 # ansible-laravel
 
-# Creating LEMP Using Ansible
+# Deploying Laravel Application using  Ansible
 
-clone the project and run one command which will create LEMP stack on you remote host
+This repo will guide yoou how you can create LEMP stack and clone the projetc from git hub to multiple servers and install php,Laravel,mysql,Nginx.
 
 $ ansible-playbook role.yml
