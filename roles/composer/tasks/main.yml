@@ -1,0 +1,29 @@
+- name: Install php-cli
+      apt:
+        name: php-cli
+        state: present
+      tags:
+        - composer
+
+    # curl -sSk https://getcomposer.org/installer -o /tmp/composer-installer.php
+- name: Download composer
+      get_url:
+        url: https://getcomposer.org/installer
+        dest: "{{ installer }}"
+      tags:
+        - composer
+
+    # php /tmp/composer-installer.php
+    # sudo mv composer.phar /usr/local/bin/composer
+- name: Install composer
+      command: "{{ item }}"
+      with_items:
+        - "php {{ installer }}"
+        - mv composer.phar /usr/local/bin/composer
+      tags:
+        - composer
+- name: Print composer version
+      command: composer -v
+      register: version
+- debug: msg="{{ version.stdout_lines }}"
+

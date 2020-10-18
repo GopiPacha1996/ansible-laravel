@@ -18,3 +18,15 @@
     private: yes
   roles:
      - git
+- hosts: all
+  become: true
+  vars:
+    installer: /tmp/installer.php
+  roles:
+     - composer
+
+- hosts: all
+  become: true
+  roles:
+     - artisan
+

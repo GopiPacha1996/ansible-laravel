@@ -1,0 +1,5 @@
+- name: Composer Install and Migrating
+  shell: cd /var/www/Laravel/ && composer install && php artisan migrate
+- name: changing the permision
+  shell: chmod -R 777 /var/www/Laravel/
+
