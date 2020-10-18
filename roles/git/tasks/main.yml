@@ -1,0 +1,7 @@
+- name: Git clone
+  expect:
+      command: git clone https://github.com/GopiPacha1996/Laravel.git /var/www/Laravel
+      responses:
+        Username: "{{ githubuser }}" # Username is a regex
+        Password: "{{ githubpassword }}" # Password is a regex
+
